@@ -4,9 +4,7 @@ import FormInput from "@/components/form-input";
 export default function LogIn() {
   async function handleForm(formData: FormData) {
     "use server";
-    console.log(formData.get("email"));
-    console.log(formData.get("password"));
-    console.log("i run in the server baby!");
+    console.log("logged in!");
   }
   return (
     <div className="flex flex-col gap-10 py-8 px-6">
@@ -29,7 +27,7 @@ export default function LogIn() {
           required
           errors={[]}
         />
-        <FormButton loading={false} text="Log in" />
+        <FormButton text="Log in" />
       </form>
     </div>
   );
