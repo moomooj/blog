@@ -1,12 +1,12 @@
 "use client";
 
-import FormButton from "@/components/form-btn";
-import FormInput from "@/components/form-input";
-import { handleForm } from "./action";
+import Button from "@/components/button";
+import Input from "@/components/input";
+import { login } from "./action";
 import { useFormState } from "react-dom";
 
 export default function LogIn() {
-  const [state, action] = useFormState(handleForm, null);
+  const [state, action] = useFormState(login, null);
   return (
     <div className="flex flex-col gap-10 py-8 px-6">
       <div className="flex flex-col gap-2 *:font-medium">
@@ -14,21 +14,21 @@ export default function LogIn() {
         <h2 className="text-xl">Log in with email and password.</h2>
       </div>
       <form action={action} className="flex flex-col gap-3">
-        <FormInput
+        <Input
           name="email"
           type="email"
           placeholder="Email"
           required
-          errors={[]}
+          errors={state?.fieldErrors.email}
         />
-        <FormInput
+        <Input
           name="password"
           type="password"
           placeholder="Password"
           required
-          errors={state?.errors ?? []}
+          errors={state?.fieldErrors.password}
         />
-        <FormButton text="Log in" />
+        <Button text="Log in" />
       </form>
     </div>
   );
