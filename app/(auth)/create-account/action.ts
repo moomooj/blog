@@ -9,7 +9,6 @@ import db from "@/lib/db";
 import { z } from "zod";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/session";
-import { error } from "console";
 
 const checkUsername = (username: string) => !username.includes("admin");
 
