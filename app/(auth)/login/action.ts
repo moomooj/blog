@@ -9,7 +9,7 @@ import db from "@/lib/db";
 import { z } from "zod";
 import getSession from "@/lib/session";
 import { redirect } from "next/navigation";
-
+/*
 const checkEmailExists = async (email: string) => {
   const user = await db.user.findUnique({
     where: {
@@ -68,4 +68,9 @@ export async function login(prevState: any, formData: FormData) {
       };
     }
   }
+}
+
+*/
+export async function login(prevState: any, formData: FormData) {
+  return null;
 }
