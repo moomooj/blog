@@ -7,10 +7,8 @@ import {
 } from "@/lib/constants";
 import db from "@/lib/db";
 import { z } from "zod";
-import { redirect } from "next/navigation";
-import getSession from "@/lib/session";
 
-const checkUsername = (username: string) => !username.includes("admin");
+/* const checkUsername = (username: string) => !username.includes("admin");
 
 const checkPassword = ({
   password,
@@ -19,6 +17,7 @@ const checkPassword = ({
   password: string;
   confirm_password: string;
 }) => password === confirm_password;
+
 
 const formSchema = z
   .object({
@@ -68,7 +67,9 @@ export async function createAccount(prevState: any, formData: FormData) {
     password: formData.get("password"),
     confirm_password: formData.get("confirm_password"),
   };
+
   const result = await formSchema.safeParseAsync(data);
+  
   if (!result.success) {
     return result.error.flatten();
   } else {
@@ -88,5 +89,27 @@ export async function createAccount(prevState: any, formData: FormData) {
     session.id = user.id;
     await session.save();
     redirect("/profile");
+  }
+}
+*/
+
+const formSchema = z.object({
+  username: z.string().min(3).max(8),
+  email: z.string().email(),
+  password: z.string().min(10),
+  confirm_password: z.string().min(10),
+});
+
+export async function createAccount(prevState: any, formData: FormData) {
+  const data = {
+    username: formData.get("username"),
+    email: formData.get("email"),
+    password: formData.get("password"),
+    confirm_password: formData.get("confirm_password"),
+  };
+  const result = formSchema.safeParse(data);
+
+  if (!result.success) {
+    return result.error.flatten();
   }
 }
