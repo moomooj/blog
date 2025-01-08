@@ -24,7 +24,13 @@ export default function CreateAccount() {
           minLength={3}
           max={10}
         />
-        <Input name="email" type="email" placeholder="Email" required />
+        <Input
+          name="email"
+          type="email"
+          placeholder="Email"
+          required
+          errors={state?.fieldErrors.email}
+        />
         <Input
           name="password"
           type="password"
