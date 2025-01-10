@@ -7,31 +7,26 @@ interface Routes {
   preventLoginUser: { [key: string]: boolean };
 }
 
-const Urls: Routes = {
-  public: {
-    "/": true,
-  },
-  preventLoginUser: {
-    "/login": true,
-    "/create-account": true,
-  },
+const Urls = {
+  public: new Set(["/"]), // 빠른 탐색을 위해 Set 사용
+  preventLoginUser: new Set(["/login", "/create-account"]),
 };
 
 export async function middleware(request: NextRequest) {
-  if (Urls.public[request.nextUrl.pathname]) {
+  const { pathname } = request.nextUrl;
+
+  if (Urls.public.has(pathname)) {
     return;
   }
-  const session = await getSession();
-  const prevent = Urls.preventLoginUser[request.nextUrl.pathname];
 
-  if (!session.id) {
-    if (!prevent) {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
-  } else {
-    if (prevent) {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
+  const session = await getSession();
+
+  if (!session.id && !Urls.preventLoginUser.has(pathname)) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  if (session.id && Urls.preventLoginUser.has(pathname)) {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 }
 export const config = {
