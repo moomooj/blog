@@ -7,35 +7,35 @@ export default function Home() {
       title: "Deep Dive into React Hooks",
       description:
         "Exploring the internal workings and optimization strategies of React hooks.",
-      thumbnail: "/goguma.jpeg",
+      thumbnail: "",
     },
     {
       id: 1,
       title: "Deep Dive into React Hooks",
       description:
         "Exploring the internal workings and optimization strategies of React hooks.",
-      thumbnail: "/goguma.jpeg",
+      thumbnail: "",
     },
     {
       id: 1,
       title: "Deep Dive into React Hooks",
       description:
         "Exploring the internal workings and optimization strategies of React hooks.",
-      thumbnail: "/goguma.jpeg",
+      thumbnail: "",
     },
     {
       id: 1,
       title: "Deep Dive into React Hooks",
       description:
         "Exploring the internal workings and optimization strategies of React hooks.",
-      thumbnail: "/goguma.jpeg",
+      thumbnail: "",
     },
     {
       id: 1,
       title: "Deep Dive into React Hooks",
       description:
         "Exploring the internal workings and optimization strategies of React hooks.",
-      thumbnail: "/goguma.jpeg",
+      thumbnail: "",
     },
   ];
 
@@ -44,7 +44,7 @@ export default function Home() {
       <section className="flex items-center gap-8 mb-10">
         <div className="rounded-full overflow-hidden w-48 h-48">
           <img
-            src="/ju_icon.png"
+            src=""
             alt="프로필 이미지"
             className="w-full h-full object-cover"
           />

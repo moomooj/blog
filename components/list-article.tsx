@@ -42,7 +42,7 @@ export default function ListArticle({
         {/* meta data */}
         <div className="flex justify-between items-center text-sm text-gray-500">
           <div className="flex items-center gap-2">
-            <img src="/ju.jpg" className="w-8 h-8 rounded-full bg-gray-700" />
+            <img src="" className="w-8 h-8 rounded-full bg-gray-700" />
             <span>{"Author"}</span>
           </div>
           <span className="text-sm text-gray-500">
