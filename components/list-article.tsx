@@ -6,40 +6,31 @@ interface ListProductProps {
   id: number;
   title: string;
   description: string;
-  thumbnail: string;
+  photo: string;
   created_at: Date;
 }
 export default function ListArticle({
   id,
   title,
   description,
-  thumbnail,
+  photo,
   created_at,
 }: ListProductProps) {
   return (
     <Link
       href={`/articles/${id}`}
-      className="bg-white rounded-sm shadow-lg overflow-hidden 
+      className=" rounded-sm shadow-lg overflow-hidden 
       transform transition-all duration-300 
        hover:shadow-xl"
     >
-      <div className="h-48 overflow-hidden">
-        <Image
-          width={50}
-          height={50}
-          src={thumbnail}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
+      <div className=" block relative w-full h-60">
+        <Image fill src={photo} alt={title} className="object-cover" />
       </div>
-
-      {/* bottom  */}
-      <div className="p-6 space-y-3 ">
+      <div className="p-3 space-y-3 ">
         <h3 className="text-xl font-bold text-gray-800 line-clamp-2">
           {title}
         </h3>
         <p className="text-gray-600 text-sm line-clamp-3">{description}</p>
-        {/* meta data */}
         <div className="flex justify-between items-center text-sm text-gray-500">
           <div className="flex items-center gap-2">
             <img src="" className="w-8 h-8 rounded-full bg-gray-700" />
@@ -53,3 +44,9 @@ export default function ListArticle({
     </Link>
   );
 }
+
+/*
+
+
+      
+  */

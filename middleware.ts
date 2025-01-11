@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import getSession from "./lib/session";
-import { object } from "zod";
 
 interface Routes {
   public: { [key: string]: boolean };
@@ -8,14 +7,22 @@ interface Routes {
 }
 
 const Urls = {
-  public: new Set(["/"]), // 빠른 탐색을 위해 Set 사용
+  public: new Set(["/"]),
   preventLoginUser: new Set(["/login", "/create-account"]),
+};
+
+const DynamicUrls = {
+  public: /^\/articles\/[^\/]+$/,
 };
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (Urls.public.has(pathname)) {
+    return;
+  }
+
+  if (DynamicUrls.public.test(pathname)) {
     return;
   }
 
