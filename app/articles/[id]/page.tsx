@@ -24,7 +24,6 @@ async function getArticle(id: number) {
       },
     },
   });
-  console.log(article);
   return article;
 }
 
