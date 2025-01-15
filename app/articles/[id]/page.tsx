@@ -27,6 +27,13 @@ async function getArticle(id: number) {
   return article;
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const article = await getArticle(Number(params.id));
+  return {
+    title: `article ${article?.title}`,
+  };
+}
+
 export default async function ArticleDetail({
   params,
 }: {

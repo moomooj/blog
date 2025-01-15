@@ -1,7 +1,9 @@
 import ArticleList from "@/components/article-list";
 import db from "@/lib/db";
 import { Prisma } from "@prisma/client";
+import { Metadata } from "next";
 import Link from "next/link";
+import { title } from "process";
 
 async function getInitialArticles() {
   const articles = await db.article.findMany({
@@ -23,6 +25,10 @@ async function getInitialArticles() {
 export type InitialArtcles = Prisma.PromiseReturnType<
   typeof getInitialArticles
 >;
+
+export const metadata: Metadata = {
+  title: "Home | Blog",
+};
 
 export default async function Home() {
   const initialArtcles = await getInitialArticles();
