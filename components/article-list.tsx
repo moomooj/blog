@@ -53,14 +53,14 @@ export default function ArticleList({ initialArtcles }: ArtcleListProrps) {
         <ListArticle key={artcle.id} {...artcle} />
       ))}
 
-      {!isLastPage ? (
+      {/*  {!isLastPage ? (
         <span
           ref={trigger}
           className=" mt-[300vh] mb-96 text-sm font-semibold bg-orange-500 w-fit mx-auto px-3 py-2 rounded-md hover:opacity-90 active:scale-95"
         >
           {isLoading ? "Loading" : "Load more"}
         </span>
-      ) : null}
+      ) : null}*/}
     </>
   );
 }

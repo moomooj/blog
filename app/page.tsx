@@ -2,8 +2,12 @@ import ArticleList from "@/components/article-list";
 import db from "@/lib/db";
 import { Prisma } from "@prisma/client";
 import { Metadata } from "next";
+import { unstable_cache as nextCache } from "next/cache";
 import Link from "next/link";
-import { title } from "process";
+
+const getCachedArticles = nextCache(getInitialArticles, ["home-articles"], {
+  revalidate: 60, 
+});
 
 async function getInitialArticles() {
   const articles = await db.article.findMany({
@@ -14,7 +18,7 @@ async function getInitialArticles() {
       photo: true,
       id: true,
     },
-    take: 1,
+    take: 3,
     orderBy: {
       created_at: "asc",
     },
@@ -31,7 +35,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const initialArtcles = await getInitialArticles();
+  const initialArtcles = await getCachedArticles();
   return (
     <div className="max-w-6xl mx-auto p-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
