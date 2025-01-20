@@ -1,16 +1,16 @@
 "use client";
 
-import { InitialArtcles } from "@/app/page";
+import { InitialArticles } from "@/app/page";
 import ListArticle from "./list-article";
 import { useEffect, useRef, useState } from "react";
 import { getMoreArticles } from "@/app/actions";
 
 interface ArtcleListProrps {
-  initialArtcles: InitialArtcles;
+  initialArticles: InitialArticles;
 }
 
-export default function ArticleList({ initialArtcles }: ArtcleListProrps) {
-  const [artcles, setArtcles] = useState(initialArtcles);
+export default function ArticleList({ initialArticles }: ArtcleListProrps) {
+  const [artcles, setArtcles] = useState(initialArticles);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [isLastPage, setisLastPage] = useState(false);
@@ -49,8 +49,8 @@ export default function ArticleList({ initialArtcles }: ArtcleListProrps) {
   }, [page]);
   return (
     <>
-      {artcles.map((artcle) => (
-        <ListArticle key={artcle.id} {...artcle} />
+      {artcles.map((article) => (
+        <ListArticle key={article.id} {...article} />
       ))}
 
       {/*  {!isLastPage ? (

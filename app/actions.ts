@@ -6,15 +6,15 @@ export async function getMoreArticles(page: number) {
   const articles = await db.article.findMany({
     select: {
       title: true,
-      created_at: true,
+      createdAt: true,
       description: true,
-      photo: true,
+      thumbnail: true,
       id: true,
     },
     skip: page * 1,
     take: 1,
     orderBy: {
-      created_at: "asc",
+      createdAt: "asc",
     },
   });
   return articles;
