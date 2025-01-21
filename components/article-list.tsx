@@ -4,6 +4,7 @@ import { InitialArticles } from "@/app/actions";
 import ListArticle from "./list-article";
 import { useEffect, useRef, useState } from "react";
 import { getMoreArticles } from "@/app/actions";
+import { InfinityScrollCardNumber } from "@/lib/utils";
 
 interface ArtcleListProrps {
   initialArticles: InitialArticles;
@@ -27,9 +28,11 @@ export default function ArticleList({ initialArticles }: ArtcleListProrps) {
         if (elemet.isIntersecting && trigger.current) {
           observer.unobserve(trigger.current);
           setIsLoading(true);
-          const newArtcles = await getMoreArticles(page + 1);
+          const newArtcles = await getMoreArticles(
+            page + InfinityScrollCardNumber
+          );
           if (newArtcles.length !== 0) {
-            setPage((prev) => prev + 1);
+            setPage((prev) => prev + InfinityScrollCardNumber);
             setArtcles((prev) => [...prev, ...newArtcles]);
           } else {
             setisLastPage(true);
@@ -56,7 +59,7 @@ export default function ArticleList({ initialArticles }: ArtcleListProrps) {
       {!isLastPage ? (
         <span
           ref={trigger}
-          className=" mt-[300vh] mb-96 text-sm font-semibold bg-orange-500 w-fit mx-auto px-3 py-2 rounded-md hover:opacity-90 active:scale-95"
+          className="mb-96 text-sm font-semibold bg-orange-500 w-fit mx-auto px-3 py-2 rounded-md hover:opacity-90 active:scale-95"
         >
           {isLoading ? "Loading" : "Load more"}
         </span>

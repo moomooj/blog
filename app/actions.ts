@@ -1,6 +1,7 @@
 "use server";
 
 import db from "@/lib/db";
+import { InfinityScrollCardNumber } from "@/lib/utils";
 import { Prisma } from "@prisma/client";
 
 export async function getInitialArticles() {
@@ -15,7 +16,7 @@ export async function getInitialArticles() {
         select: { avatar: true },
       },
     },
-    take: 5,
+    take: InfinityScrollCardNumber,
     orderBy: {
       createdAt: "asc",
     },

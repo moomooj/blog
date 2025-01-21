@@ -11,3 +11,5 @@ export function formatToTimeAgo(date: string): string {
 
 export const ImageDeliveryURL =
   "https://imagedelivery.net/zRDsOnXdrMQRT3BoRETbLA/";
+
+export const InfinityScrollCardNumber = 10;

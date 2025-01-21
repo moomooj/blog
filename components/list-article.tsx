@@ -31,6 +31,7 @@ export default function ListArticle({
       <div className=" block relative w-full h-60">
         <Image
           fill
+          sizes="10"
           src={thumbnail ? `${thumbnail}/public` : ""}
           alt={title}
           className="object-cover"
