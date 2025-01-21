@@ -12,7 +12,7 @@ model User {
   username  String    @unique
   email     String?   @unique
   password  String
-  avatar    String?   @default("https://ItGonnaBeDefaultImage/123")
+  avatar    String    @default("https://imagedelivery.net/zRDsOnXdrMQRT3BoRETbLA/a6bec09e-1607-4c2a-e2c1-2f7eec4d5300/public")
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   Article   Article[]

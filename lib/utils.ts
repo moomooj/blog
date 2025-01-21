@@ -8,3 +8,6 @@ export function formatToTimeAgo(date: string): string {
   if (diff === 0) return "Today";
   return formatter.format(diff, "days");
 }
+
+export const ImageDeliveryURL =
+  "https://imagedelivery.net/zRDsOnXdrMQRT3BoRETbLA/";

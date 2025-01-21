@@ -1,6 +1,6 @@
 "use client";
 
-import { InitialArticles } from "@/app/page";
+import { InitialArticles } from "@/app/actions";
 import ListArticle from "./list-article";
 import { useEffect, useRef, useState } from "react";
 import { getMoreArticles } from "@/app/actions";
@@ -53,14 +53,14 @@ export default function ArticleList({ initialArticles }: ArtcleListProrps) {
         <ListArticle key={article.id} {...article} />
       ))}
 
-      {/*  {!isLastPage ? (
+      {!isLastPage ? (
         <span
           ref={trigger}
           className=" mt-[300vh] mb-96 text-sm font-semibold bg-orange-500 w-fit mx-auto px-3 py-2 rounded-md hover:opacity-90 active:scale-95"
         >
           {isLoading ? "Loading" : "Load more"}
         </span>
-      ) : null}*/}
+      ) : null}
     </>
   );
 }

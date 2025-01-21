@@ -1,39 +1,13 @@
 import ArticleList from "@/components/article-list";
-import db from "@/lib/db";
-import { Prisma } from "@prisma/client";
 import { Metadata } from "next";
-import { unstable_cache as nextCache, revalidatePath } from "next/cache";
-import Link from "next/link";
-
-const getCachedArticles = nextCache(getInitialArticles, ["home-articles"]);
-
-async function getInitialArticles() {
-  const articles = await db.article.findMany({
-    select: {
-      title: true,
-      createdAt: true,
-      description: true,
-      thumbnail: true,
-      id: true,
-    },
-    take: 5,
-    orderBy: {
-      createdAt: "asc",
-    },
-  });
-  return articles;
-}
-
-export type InitialArticles = Prisma.PromiseReturnType<
-  typeof getInitialArticles
->;
+import { getInitialArticles } from "./actions";
 
 export const metadata: Metadata = {
-  title: "Home | Blog",
+  title: "Devlog",
 };
 
 export default async function Home() {
-  const initialArticles = await getCachedArticles();
+  const initialArticles = await getInitialArticles();
 
   return (
     <div className="max-w-6xl mx-auto">

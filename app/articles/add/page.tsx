@@ -7,6 +7,7 @@ import "react-quill/dist/quill.snow.css";
 import { uploadArtcle } from "./action";
 import { useFormState } from "react-dom";
 import { getCloudflareUploadUrl } from "@/lib/getCloudflareUploadUrl";
+import { ImageDeliveryURL } from "@/lib/utils";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function AddArtcle() {
@@ -43,7 +44,7 @@ export default function AddArtcle() {
     if (response.status !== 200) {
       return;
     }
-    const imageUrl = `https://imagedelivery.net/zRDsOnXdrMQRT3BoRETbLA/${id}`;
+    const imageUrl = `${ImageDeliveryURL}${id}`;
     formData.set("thumbnail", imageUrl);
     return uploadArtcle(_, formData);
   };
