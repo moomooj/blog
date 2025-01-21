@@ -8,7 +8,6 @@ import Link from "next/link";
 const getCachedArticles = nextCache(getInitialArticles, ["home-articles"]);
 
 async function getInitialArticles() {
-  console.log("Gg");
   const articles = await db.article.findMany({
     select: {
       title: true,
@@ -35,19 +34,11 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const initialArticles = await getCachedArticles();
-  const revalidate = async () => {
-    "use server";
-    revalidatePath("/");
-  };
+
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <ArticleList initialArticles={initialArticles} />
-        <form action={revalidate}>
-          <button>Revalidate</button>
-        </form>
-
-        <Link href="/articles/add">add articles</Link>
       </div>
     </div>
   );

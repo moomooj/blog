@@ -27,7 +27,7 @@ const formSchema = z.object({
     .string()
     .email()
     .toLowerCase()
-    .refine(checkEmailExists, "An account with this email does not exist."),
+    .refine(checkEmailExists, "Email does not exist."),
   password: z
     .string({ required_error: "Password is required" })
     .min(PASSWORD_MIN_LENGTH)
