@@ -6,15 +6,17 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import { uploadArtcle } from "./action";
 import { useFormState } from "react-dom";
+import { getCloudflareUploadUrl } from "@/lib/getCloudflareUploadUrl";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function AddArtcle() {
   const [preview, setPreview] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [uploadUrl, setUploadUrl] = useState("");
   const handleChange = (value: string) => {
     setContent(value);
   };
-  const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { files },
     } = event;
@@ -26,7 +28,27 @@ export default function AddArtcle() {
     setPreview(url);
   };
 
-  const [state, action] = useFormState(uploadArtcle, null);
+  const interceptAction = async (_: any, formData: FormData) => {
+    const file = formData.get("thumbnail");
+    const { id, uploadURL } = await getCloudflareUploadUrl();
+    if (!file) {
+      return;
+    }
+    const cloudflareForm = new FormData();
+    cloudflareForm.append("file", file);
+    const response = await fetch(uploadURL, {
+      method: "post",
+      body: cloudflareForm,
+    });
+    if (response.status !== 200) {
+      return;
+    }
+    const imageUrl = `https://imagedelivery.net/zRDsOnXdrMQRT3BoRETbLA/${id}`;
+    formData.set("thumbnail", imageUrl);
+    return uploadArtcle(_, formData);
+  };
+
+  const [state, action] = useFormState(interceptAction, null);
   return (
     <div>
       <form action={action}>

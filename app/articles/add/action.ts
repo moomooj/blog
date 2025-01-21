@@ -25,14 +25,7 @@ export async function uploadArtcle(_: any, formData: FormData) {
     description: formData.get("description"),
     thumbnail: formData.get("thumbnail"),
   };
-  if (data.thumbnail instanceof File) {
-    const thumbnailData = await data.thumbnail.arrayBuffer();
-    await fs.appendFile(
-      `./public/${data.thumbnail.name}`,
-      Buffer.from(thumbnailData)
-    );
-    data.thumbnail = `/${data.thumbnail.name}`;
-  }
+
   const results = articleSchema.safeParse(data);
   if (!results.success) {
     return results.error.flatten();

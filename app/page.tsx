@@ -8,6 +8,7 @@ import Link from "next/link";
 const getCachedArticles = nextCache(getInitialArticles, ["home-articles"]);
 
 async function getInitialArticles() {
+  console.log("Gg");
   const articles = await db.article.findMany({
     select: {
       title: true,
@@ -16,7 +17,7 @@ async function getInitialArticles() {
       thumbnail: true,
       id: true,
     },
-    take: 3,
+    take: 5,
     orderBy: {
       createdAt: "asc",
     },
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const initialArticles = await getInitialArticles();
+  const initialArticles = await getCachedArticles();
   const revalidate = async () => {
     "use server";
     revalidatePath("/");

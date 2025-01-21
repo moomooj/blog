@@ -5,6 +5,9 @@ const nextConfig = {
       {
         hostname: "it_will_be_the_other_page_images",
       },
+      {
+        hostname: "imagedelivery.net",
+      },
     ],
   },
 };
