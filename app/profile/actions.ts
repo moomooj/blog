@@ -1,6 +1,8 @@
+"use server";
+
 import db from "@/lib/db";
 import getSession from "@/lib/session";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 export async function getUser() {
   const session = await getSession();
@@ -27,4 +29,10 @@ export async function getUser() {
     }
   }
   notFound();
+}
+
+export async function logOut() {
+  const session = await getSession();
+  session.destroy();
+  redirect("/");
 }
