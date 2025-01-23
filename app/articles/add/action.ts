@@ -47,7 +47,7 @@ export async function uploadArtcle(_: any, formData: FormData) {
           id: true,
         },
       });
-      redirect(`/`);
+      redirect("/");
     }
   }
 }
