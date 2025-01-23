@@ -33,7 +33,7 @@ export default function ListArticle({
         <Image
           fill
           sizes="10"
-          src={thumbnail ? `${thumbnail}/public` : ""}
+          src={thumbnail ? `${thumbnail}/article` : ""}
           alt={title}
           className="object-cover"
         />

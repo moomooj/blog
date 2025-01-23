@@ -6,7 +6,7 @@ import {
   PASSWORD_REGEX_ERROR,
 } from "@/lib/constants";
 import db from "@/lib/db";
-import { date, z } from "zod";
+import { z } from "zod";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/session";
 
@@ -30,6 +30,10 @@ const formSchema = z
       .min(3, "Create an Username at least 3 characters long.")
       .max(10, "Enter an Username under 10 characters.")
       .trim()
+      .regex(
+        /^[a-z0-9_]+$/,
+        "Only letters, numbers, and underscores are allowed."
+      )
       .toLowerCase()
       .refine(checkUsername, "this Username is not allowed"),
     email: z
@@ -116,12 +120,12 @@ export async function createAccount(prevState: any, formData: FormData) {
         email: result.data.email,
         password: hashedPassword,
       },
-      select: { id: true },
+      select: { id: true, username: true },
     });
 
     const session = await getSession();
     session.id = user.id;
     await session.save();
-    redirect("/profile");
+    redirect(`/profile/${user.username}`);
   }
 }
