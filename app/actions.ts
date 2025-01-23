@@ -13,12 +13,12 @@ export async function getInitialArticles() {
       thumbnail: true,
       id: true,
       user: {
-        select: { avatar: true },
+        select: { avatar: true, username: true },
       },
     },
     take: InfinityScrollCardNumber,
     orderBy: {
-      createdAt: "asc",
+      createdAt: "desc",
     },
   });
   return articles;
@@ -37,13 +37,13 @@ export async function getMoreArticles(page: number) {
       thumbnail: true,
       id: true,
       user: {
-        select: { avatar: true },
+        select: { avatar: true, username: true },
       },
     },
     skip: page * 1,
     take: 1,
     orderBy: {
-      createdAt: "asc",
+      createdAt: "desc",
     },
   });
   return articles;

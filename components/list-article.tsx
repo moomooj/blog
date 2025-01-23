@@ -10,6 +10,7 @@ interface ListProductProps {
   createdAt: Date;
   user: {
     avatar: string | null;
+    username: string;
   };
 }
 
@@ -53,7 +54,7 @@ export default function ListArticle({
               src={`${user.avatar}`}
               className="w-8 h-8 rounded-full bg-gray-700"
             />
-            <span>{"Author"}</span>
+            <span>{`by ${user.username}`}</span>
           </div>
           <span className="text-sm text-gray-500">
             {formatToTimeAgo(createdAt.toString())}

@@ -21,13 +21,14 @@ export async function getUser(username: string) {
             user: {
               select: {
                 avatar: true,
+                username: true,
               },
             },
           },
 
           take: InfinityScrollCardNumber,
           orderBy: {
-            createdAt: "asc",
+            createdAt: "desc",
           },
         },
       },

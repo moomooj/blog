@@ -13,7 +13,6 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 export default function AddArtcle() {
   const [preview, setPreview] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [uploadUrl, setUploadUrl] = useState("");
   const handleChange = (value: string) => {
     setContent(value);
   };
@@ -78,7 +77,7 @@ export default function AddArtcle() {
         <Input
           name="description"
           required
-          placeholder="자세한 설명"
+          placeholder="write more description"
           type="text"
         />
         <ReactQuill
