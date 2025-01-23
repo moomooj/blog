@@ -8,6 +8,7 @@ import { uploadArtcle } from "./action";
 import { useFormState } from "react-dom";
 import { getCloudflareUploadUrl } from "@/lib/getCloudflareUploadUrl";
 import { ImageDeliveryURL } from "@/lib/utils";
+import Image from "next/image";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function AddArtcle() {
@@ -50,50 +51,113 @@ export default function AddArtcle() {
 
   const [state, action] = useFormState(interceptAction, null);
   return (
-    <div>
-      <form action={action}>
-        <label htmlFor="thumbnail">
-          <div
-            className="text-neural-400 text-sm"
-            style={{ backgroundImage: `url(${preview})` }}
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
+      <h1 className="text-3xl font-bold mb-6 text-gray-800 text-center">
+        Create New Article
+      </h1>
+      <form action={action} className="space-y-6">
+        <div className="mb-4">
+          <label
+            htmlFor="thumbnail"
+            className="block mb-2 text-sm font-medium text-gray-700"
           >
-            Add your photo.
-          </div>
-        </label>
-        <input
-          onChange={onImageChange}
-          type="file"
-          id="thumbnail"
-          name="thumbnail"
-          hidden
-        />
+            Thumbnail Image
+          </label>
+          <label
+            htmlFor="thumbnail"
+            className={`
+              flex w-full h-64 border-2 border-dashed rounded-lg cursor-pointer
+               items-center justify-center 
+              ${
+                preview
+                  ? "border-transparent"
+                  : "border-gray-300 hover:border-gray-400"
+              }
+            `}
+          >
+            {preview ? (
+              <Image
+                width={20}
+                height={20}
+                src={preview}
+                alt="Preview"
+                className="w-full h-full object-cover rounded-lg"
+              />
+            ) : (
+              <span className="text-gray-500 text-center">
+                Click to upload image
+              </span>
+            )}
+          </label>
+          <input
+            onChange={onImageChange}
+            type="file"
+            id="thumbnail"
+            name="thumbnail"
+            accept="image/jpeg,image/png"
+            hidden
+          />
+        </div>
         <Input type="hidden" name="content" value={content} />
-        <Input
-          type="text"
-          name="title"
-          placeholder="write your title"
-          errors={state?.fieldErrors.title}
-        />
-        <Input
-          name="description"
-          required
-          placeholder="write more description"
-          type="text"
-        />
-        <ReactQuill
-          value={content}
-          onChange={handleChange}
-          modules={{
-            toolbar: [
-              [{ header: "1" }, { header: "2" }],
-              ["bold", "italic", "strike"],
-              [{ align: [] }],
-              ["link", "image"],
-              ["blockquote", "code-block"],
-            ],
-          }}
-        />
-        <Button text="작성완료" />
+        <div className="space-y-4">
+          <div>
+            <label
+              htmlFor="title"
+              className="block mb-2 text-sm font-medium text-gray-700"
+            >
+              Title
+            </label>
+            <Input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Write your title"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+            {state?.fieldErrors?.title && (
+              <p className="text-red-500 text-sm mt-1">
+                {state.fieldErrors.title}
+              </p>
+            )}
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="description"
+            className="block mb-2 text-sm font-medium text-gray-700"
+          >
+            Description
+          </label>
+          <textarea
+            name="description"
+            id="description"
+            placeholder="Write more description"
+            required
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            rows={3}
+          />
+        </div>
+        <div>
+          <label className="block mb-2 text-sm font-medium text-gray-700">
+            Content
+          </label>
+          <ReactQuill
+            value={content}
+            onChange={handleChange}
+            modules={{
+              toolbar: [
+                [{ header: "1" }, { header: "2" }],
+                ["bold", "italic", "strike"],
+                [{ align: [] }],
+                ["link", "image"],
+                ["blockquote", "code-block"],
+              ],
+            }}
+          />
+        </div>
+
+        <Button text="submit" />
       </form>
     </div>
   );

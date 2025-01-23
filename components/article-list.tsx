@@ -55,15 +55,16 @@ export default function ArticleList({ initialArticles }: ArtcleListProrps) {
       {artcles.map((article) => (
         <ListArticle key={article.id} {...article} />
       ))}
-
       {!isLastPage ? (
         <span
           ref={trigger}
-          className="mb-96 text-sm font-semibold bg-orange-500 w-fit mx-auto px-3 py-2 rounded-md hover:opacity-90 active:scale-95"
+          className="mb-96 text-sm font-semibold w-fit mx-auto px-3 py-2 rounded-md hover:opacity-90 active:scale-95"
         >
-          {isLoading ? "Loading" : "Load more"}
+          {isLoading ? "Loading" : ""}
         </span>
-      ) : null}
+      ) : (
+        "no more article"
+      )}
     </>
   );
 }

@@ -44,7 +44,7 @@ export default function LoggedInLayout({ user }: UserProps) {
                 className="block px-4 py-3 text-black hover:bg-gray-100 transition-colors"
                 href="/articles/add"
               >
-                Add Articles
+                Create Article
               </Link>
 
               <div
