@@ -6,8 +6,11 @@ import getUserInfo from "@/lib/getUserInfo";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Blog",
+    template: "%s | Devlog",
     default: "Devlog",
+  },
+  icons: {
+    icon: "/devlogLogo.svg",
   },
   description:
     "blogging service for developers. Don't worry about where to write, start with Devlog.",

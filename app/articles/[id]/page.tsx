@@ -30,7 +30,7 @@ async function getArticle(id: number) {
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const article = await getArticle(Number(params.id));
   return {
-    title: `article ${article?.title}`,
+    title: `${article?.title}`,
   };
 }
 
