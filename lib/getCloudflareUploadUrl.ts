@@ -10,7 +10,6 @@ export async function getCloudflareUploadUrl() {
       },
     }
   );
-  console.log(response);
   const data = await response.json();
   const { success, result } = data;
   if (success) {
