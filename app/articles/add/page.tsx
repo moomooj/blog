@@ -32,7 +32,6 @@ export default function AddArtcle() {
   const interceptAction = async (_: any, formData: FormData) => {
     const file = formData.get("thumbnail");
     const uploadURLResult = await getCloudflareUploadUrl();
-    console.log(uploadURLResult);
 
     if (!file) {
       return;
