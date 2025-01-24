@@ -31,25 +31,27 @@ export default function AddArtcle() {
 
   const interceptAction = async (_: any, formData: FormData) => {
     const file = formData.get("thumbnail");
-    const { id, uploadURL } = await getCloudflareUploadUrl();
+    const uploadURLResult = await getCloudflareUploadUrl();
+
     if (!file) {
       return;
     }
     const cloudflareForm = new FormData();
     cloudflareForm.append("file", file);
-    const response = await fetch(uploadURL, {
+    const response = await fetch(uploadURLResult.uploadURL, {
       method: "post",
       body: cloudflareForm,
     });
     if (response.status !== 200) {
       return;
     }
-    const imageUrl = `${ImageDeliveryURL}${id}`;
+    const imageUrl = `${ImageDeliveryURL}${uploadURLResult.id}`;
     formData.set("thumbnail", imageUrl);
     return uploadArtcle(_, formData);
   };
 
   const [state, action] = useFormState(interceptAction, null);
+
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
       <h1 className="text-3xl font-bold mb-6 text-gray-800 text-center">

@@ -27,10 +27,19 @@ async function getArticle(id: number) {
   return article;
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { id?: string };
+}) {
+  if (!params?.id || isNaN(Number(params.id))) {
+    return {
+      title: "Default Title",
+    };
+  }
   const article = await getArticle(Number(params.id));
   return {
-    title: `${article?.title}`,
+    title: article ? `${article.title}` : "Article Not Found",
   };
 }
 
