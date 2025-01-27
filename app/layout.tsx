@@ -3,6 +3,7 @@ import "./globals.css";
 import LoggedInLayout from "@/components/loggedInLayout";
 import LoggedOutLayout from "@/components/loggedOutLayout";
 import getUserInfo from "@/lib/getUserInfo";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: {
@@ -39,6 +40,17 @@ export default async function RootLayout({
             {children}
           </>
         )}
+        <footer className="text-center pt-16 text-gray-600 text-sm">
+          <p>
+            <Link
+              href={"/ju"}
+              className=" px-4 py-2 bg-gray-300 text-white rounded-md hover:bg-gray-400 transition-colors"
+            >
+              Made by Ju
+            </Link>
+          </p>
+          <p className="mt-4">&copy; 2025 Juyoung Oh. All rights reserved.</p>
+        </footer>
       </body>
     </html>
   );
