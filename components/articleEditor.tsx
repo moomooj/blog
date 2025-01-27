@@ -3,9 +3,13 @@
 import "react-quill/dist/quill.snow.css";
 
 import React, { useRef } from "react";
-import ReactQuill from "react-quill";
+
 import { ImageDeliveryURL } from "@/lib/utils";
 import { getCloudflareUploadUrl } from "@/lib/getCloudflareUploadUrl";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), {
+  ssr: false,
+}) as React.ComponentType<any>;
 
 interface ArticleEditorProps {
   content: string;
