@@ -9,4 +9,28 @@ This is Juyoung's personal project to create a web of simple artifacts for devel
 
 - /articles/[id]
   article detail page HTML insert.
-  (should be prevent XSS)
+  article CSS Update.
+
+-
+
+### Future
+
+- articles/edit
+- articles/delete
+
+- articles/add
+  XXS prevent
+
+- articles/add
+  css
+
+- images quality
+
+- tags
+- likes
+- settings
+
+- light /dark mode
+
+- SNS login
+- user update, delete
