@@ -2,14 +2,30 @@
 
 import "react-quill/dist/quill.snow.css";
 
-import React, { useRef } from "react";
-
+import React, { RefObject, useRef } from "react";
 import { ImageDeliveryURL } from "@/lib/utils";
 import { getCloudflareUploadUrl } from "@/lib/getCloudflareUploadUrl";
 import dynamic from "next/dynamic";
-const ReactQuill = dynamic(() => import("react-quill"), {
-  ssr: false,
-}) as React.ComponentType<any>;
+import ReactQuill, { ReactQuillProps } from "react-quill";
+
+const ReactQuillComponent = dynamic(
+  async () => {
+    const { default: RQ } = await import("react-quill");
+
+    const Component = ({
+      forwardedRef,
+      ...props
+    }: { forwardedRef: RefObject<ReactQuill> } & ReactQuillProps) => (
+      <RQ ref={forwardedRef} {...props} />
+    );
+
+    Component.displayName = "ReactQuillComponent";
+    return Component;
+  },
+  {
+    ssr: false,
+  }
+);
 
 interface ArticleEditorProps {
   content: string;
@@ -53,6 +69,7 @@ export default function ArticleEditor({
 
         if (response.ok) {
           const imageUrl = `${ImageDeliveryURL}${uploadURLResult.id}/article`;
+
           const editor = reactQuillRef.current?.getEditor();
           if (editor) {
             const range = editor.getSelection();
@@ -113,8 +130,8 @@ export default function ArticleEditor({
       <label className="block mb-2 text-sm font-medium text-gray-700">
         Content
       </label>
-      <ReactQuill
-        ref={reactQuillRef}
+      <ReactQuillComponent
+        forwardedRef={reactQuillRef}
         theme="snow"
         value={content}
         onChange={onChange}
