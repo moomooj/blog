@@ -6,6 +6,13 @@ export function formatToTimeAgo(date: string): string {
   const formatter = new Intl.RelativeTimeFormat("en");
 
   if (diff === 0) return "Today";
+  if (diff >= -7 && diff < 0) return formatter.format(diff, "days");
+
+  if (diff < -7) {
+    const formattedDate = new Date(date).toLocaleDateString("en-GB");
+    return formattedDate;
+  }
+
   return formatter.format(diff, "days");
 }
 
