@@ -27,7 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`p-2 sm:p-6 pt-28 bg-gray-50 text-black max-w-screen-2xl mx-auto `}
+        className={`px-6 py-20 sm:px-2 sm:py-20 pt-28 bg-gray-50 text-black max-w-screen-2xl mx-auto `}
       >
         {user ? (
           <>

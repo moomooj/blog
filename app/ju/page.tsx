@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Ju() {
   return (
-    <div className="max-w-4xl mx-auto py-12">
+    <div className="max-w-4xl mx-auto py-20">
       <section className="mb-16 text-center">
         <div className="flex items-center justify-center">
           <Image
@@ -152,15 +152,13 @@ export default function Ju() {
         <div className="space-y-8">
           <div className="flex flex-col gap-8">
             <div className="bg-white  p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-2xl font-semibold text-gray-800">
-                    Front-End Developer
-                  </h3>
-                  <p className="text-gray-600">Fave</p>
-                </div>
+              <div className="flex justify-between items-center">
+                <h3 className="text-2xl font-semibold text-gray-800">
+                  Front-End Developer
+                </h3>
                 <span className="text-sm text-gray-500">2023</span>
               </div>
+              <p className="text-gray-600  mb-4">Fave</p>
               <ul className="text-gray-600 list-disc pl-5 space-y-2">
                 <li>Worked on 3D web projects in collaboration with Samsung</li>
                 <li>
@@ -173,15 +171,13 @@ export default function Ju() {
               </ul>
             </div>
             <div className="bg-white  p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-2xl font-semibold text-gray-800">
-                    Front-End Developer
-                  </h3>
-                  <p className="text-gray-600">Whatis</p>
-                </div>
+              <div className="flex justify-between items-center">
+                <h3 className="text-2xl font-semibold text-gray-800">
+                  Front-End Developer
+                </h3>
                 <span className="text-sm text-gray-500">2022 - 2023</span>
               </div>
+              <p className="text-gray-600  mb-4">Whatis</p>
               <ul className="text-gray-600 list-disc pl-5 space-y-2">
                 <li>
                   Developed the front-end of a learning management system (LMS)
@@ -207,41 +203,34 @@ export default function Ju() {
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Education</h2>
         <div className="flex flex-col gap-4">
           <div>
-            <h3 className="text-lg font-semibold">Douglas College</h3>
-            <div className="flex justify-between">
-              <p className="text-gray-600">Computer and Information Systems</p>
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-semibold">Douglas College</h3>
               <p className="text-gray-500">2025 - Present</p>
             </div>
+            <p className="text-gray-600">
+              Computing Studies and Information Systems
+            </p>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">ILAC Language school</h3>
-            <div className="flex justify-between">
-              <p className="text-gray-600">Academic English</p>
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-semibold">ILAC Language school</h3>
               <p className="text-gray-500">2024</p>
             </div>
+            <p className="text-gray-600">Academic English</p>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Naver boostcamp</h3>
-            <div className="flex justify-between">
-              <p className="text-gray-600">Web·App (Front)</p>
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-semibold">Naver boostcamp</h3>
               <p className="text-gray-500">2023</p>
             </div>
+            <p className="text-gray-600">Web·App (Front-End)</p>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Green Computer Academy</h3>
-            <div className="flex justify-between">
-              <p className="text-gray-600">Programming Introduction</p>
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-semibold">Green Computer Academy</h3>
               <p className="text-gray-500">2021</p>
             </div>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Kyonggi University</h3>
-            <div className="flex justify-between">
-              <p className="text-gray-600">
-                Department of Applied Statistics and Data Science
-              </p>
-              <p className="text-gray-500">2017 - 2022</p>
-            </div>
+            <p className="text-gray-600">Programming Introduction</p>
           </div>
         </div>
       </section>
