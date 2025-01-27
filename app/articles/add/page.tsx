@@ -2,21 +2,21 @@
 import Input from "@/components/input";
 import Button from "@/components/button";
 import { useState } from "react";
-import dynamic from "next/dynamic";
-import "react-quill/dist/quill.snow.css";
 import { uploadArtcle } from "./action";
 import { useFormState } from "react-dom";
 import { getCloudflareUploadUrl } from "@/lib/getCloudflareUploadUrl";
 import { ImageDeliveryURL } from "@/lib/utils";
 import Image from "next/image";
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import ArticleEditor from "@/components/articleEditor";
 
 export default function AddArtcle() {
   const [preview, setPreview] = useState<string>("");
   const [content, setContent] = useState<string>("");
+
   const handleChange = (value: string) => {
     setContent(value);
   };
+
   const onImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { files },
@@ -140,24 +140,7 @@ export default function AddArtcle() {
             rows={3}
           />
         </div>
-        <div>
-          <label className="block mb-2 text-sm font-medium text-gray-700">
-            Content
-          </label>
-          <ReactQuill
-            value={content}
-            onChange={handleChange}
-            modules={{
-              toolbar: [
-                [{ header: "1" }, { header: "2" }],
-                ["bold", "italic", "strike"],
-                [{ align: [] }],
-                ["link", "image"],
-                ["blockquote", "code-block"],
-              ],
-            }}
-          />
-        </div>
+        <ArticleEditor content={content} onChange={handleChange} />
 
         <Button text="submit" />
       </form>

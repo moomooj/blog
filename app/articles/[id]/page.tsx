@@ -56,11 +56,15 @@ export default async function ArticleDetail({
 
   return (
     <div>
+      {isOwner ? <button>edit article</button> : null}
       <h1>{article.title}</h1>
       <p>{article.description}</p>
       <span>{article.user.username}</span>
       <br />
-      {isOwner ? <button>edit article</button> : null}
+      <div
+        className="article-content"
+        dangerouslySetInnerHTML={{ __html: article.content }}
+      />
     </div>
   );
 }
