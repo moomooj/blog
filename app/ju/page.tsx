@@ -116,35 +116,70 @@ export default function Ju() {
       </section>
 
       <section className="mb-16">
-        <Link href={"/"} className="text-gray-900 ">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Featured Projects
-          </h2>
-          <div className="space-y-8">
-            <div className="bg-white hover:bg-blue-50 p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="flex justify-between items-center">
-                <h3 className="text-xl font-semibold mb-2">DevLog</h3>
-                <span className="text-xs text-gray-500">20/DEC/2024 - </span>
-              </div>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          Featured Projects
+        </h2>
+        <div className="flex flex-col gap-6">
+          <Link href={"/"} className="text-gray-900">
+            <div className="space-y-8">
+              <div className="bg-white hover:bg-blue-50 p-6 rounded-lg shadow-sm border border-gray-100">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-xl font-semibold mb-2">DevLog</h3>
+                  <span className="text-xs text-gray-500">20/12/2024 -</span>
+                </div>
 
-              <p className="text-gray-600 mb-4">
-                A blogging platform for developers to share their knowledge and
-                experiences. Built with Next.js, Prisma, and PostgreSQL.
-              </p>
-              <div className="flex gap-2 items-center">
-                <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
-                  Next.js
-                </span>
-                <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
-                  Prisma
-                </span>
-                <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
-                  PostgreSQL
-                </span>
+                <p className="text-gray-600 mb-4">
+                  A blogging platform for developers to share their knowledge
+                  and experiences. Built with Next.js, Prisma, and PostgreSQL.
+                </p>
+                <div className="flex gap-2 items-center">
+                  <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
+                    Next.js
+                  </span>
+                  <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
+                    Prisma
+                  </span>
+                  <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
+                    PostgreSQL
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+          <Link
+            href={"https://moomooj.github.io/my-room/"}
+            className="text-gray-900"
+          >
+            <div className="space-y-8">
+              <div className="bg-white hover:bg-blue-50 p-6 rounded-lg shadow-sm border border-gray-100">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-xl font-semibold mb-2">My Room</h3>
+                  <span className="text-xs text-gray-500">23/11/2023</span>
+                </div>
+
+                <p className="text-gray-600 mb-4">
+                  With Three.js, I was able to bring my space to life with
+                  interactive 3D elements! Built with ReactThreeFiber, recil,
+                  React.
+                </p>
+                <div className="flex gap-2 items-center">
+                  <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
+                    React.js
+                  </span>
+                  <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
+                    Three.js
+                  </span>
+                  <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
+                    styled-components
+                  </span>
+                  <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
+                    recoil
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
       </section>
 
       <section className="mb-16">
