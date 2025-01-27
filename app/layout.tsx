@@ -40,16 +40,14 @@ export default async function RootLayout({
             {children}
           </>
         )}
-        <footer className="text-center pt-16 text-gray-600 text-sm">
-          <p>
-            <Link
-              href={"/ju"}
-              className=" px-4 py-2 bg-gray-300 text-white rounded-md hover:bg-gray-400 transition-colors"
-            >
-              Made by Ju
+        <footer className="text-center pt-6 text-sm">
+          <p className="mt-4 text-gray-300 ">
+            &copy; 2025{" "}
+            <Link href={"/ju"} className="text-gray-300 hover:text-gray-900">
+              Juyoung Oh{" "}
             </Link>
+            All rights reserved.
           </p>
-          <p className="mt-4">&copy; 2025 Juyoung Oh. All rights reserved.</p>
         </footer>
       </body>
     </html>
