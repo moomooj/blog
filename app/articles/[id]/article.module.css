@@ -1,0 +1,176 @@
+/* Base Content Container */
+.content {
+  @apply max-w-4xl mx-auto
+           font-sans text-gray-800 text-lg 
+           leading-relaxed
+           px-6 py-8;
+}
+
+/* Headings */
+.content h1 {
+  @apply text-4xl font-bold 
+           text-gray-900
+           mb-8 mt-12
+           leading-tight;
+}
+
+.content h2 {
+  @apply text-3xl font-bold 
+           text-gray-800
+           mb-6 mt-10;
+}
+
+.content h3 {
+  @apply text-2xl font-semibold 
+           text-gray-800
+           mb-4 mt-8;
+}
+
+/* Paragraphs */
+.content p {
+  @apply mb-6 text-gray-700
+           leading-relaxed;
+}
+
+/* Lists */
+.content ul,
+.content ol {
+  @apply ml-6 mb-6 
+           space-y-2;
+}
+
+.content ul {
+  @apply list-disc;
+}
+
+.content ol {
+  @apply list-decimal;
+}
+
+.content li {
+  @apply text-gray-700
+           leading-relaxed
+           pl-2;
+}
+
+/* Links */
+.content a {
+  @apply text-blue-600 
+           font-medium
+           hover:text-blue-800
+           transition-colors
+           underline-offset-2
+           hover:underline;
+}
+
+/* Images */
+.content img {
+  @apply w-full
+           rounded-lg
+           my-8
+           shadow-md;
+}
+
+/* Code Blocks */
+.content pre {
+  @apply bg-gray-50
+           p-4 my-6
+           rounded-lg
+           overflow-x-auto
+           border border-gray-200;
+}
+
+.content code {
+  @apply font-mono text-sm
+           bg-gray-50
+           px-1.5 py-0.5
+           rounded
+           border border-gray-200;
+}
+
+/* Inline code inside pre blocks */
+.content pre code {
+  @apply bg-transparent
+           p-0 border-0;
+}
+
+/* Blockquotes */
+.content blockquote {
+  @apply pl-6 my-8
+           border-l-4 border-blue-500
+           italic
+           text-gray-600
+           bg-gray-50
+           py-4 pr-4
+           rounded-r-lg;
+}
+
+/* Tables */
+.content table {
+  @apply w-full my-8
+           border-collapse
+           bg-white;
+}
+
+.content th {
+  @apply bg-gray-50
+           px-4 py-2
+           border border-gray-200
+           font-semibold
+           text-left;
+}
+
+.content td {
+  @apply px-4 py-2
+           border border-gray-200;
+}
+
+/* Horizontal Rule */
+.content hr {
+  @apply my-12
+           border-gray-200;
+}
+
+/* Custom Elements */
+.content figure {
+  @apply my-8;
+}
+
+.content figcaption {
+  @apply text-sm text-gray-600
+           text-center
+           mt-2;
+}
+
+/* First Element Adjustments */
+.content > *:first-child {
+  @apply mt-0;
+}
+
+/* Last Element Adjustments */
+.content > *:last-child {
+  @apply mb-0;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .content {
+    @apply text-base px-4;
+  }
+
+  .content h1 {
+    @apply text-3xl;
+  }
+
+  .content h2 {
+    @apply text-2xl;
+  }
+
+  .content h3 {
+    @apply text-xl;
+  }
+
+  .content pre {
+    @apply mx-0;
+  }
+}

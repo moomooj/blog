@@ -105,7 +105,7 @@ export default function ArticleEditor({
     () => ({
       toolbar: {
         container: [
-          [{ header: [1, 2, 3, 4, 5, 6, false] }],
+          [{ header: [1, 2, 3, false] }],
           ["bold", "italic", "underline", "strike", "blockquote", "code-block"],
           [
             { list: "ordered" },
@@ -114,8 +114,7 @@ export default function ArticleEditor({
             { indent: "+1" },
           ],
           ["link", "image"],
-          [{ color: [] }, { background: [] }, { align: [] }],
-          ["clean"],
+          [{ align: [] }],
         ],
         handlers: {
           image: handleImageUpload,

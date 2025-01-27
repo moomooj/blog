@@ -46,9 +46,10 @@ export default function ListArticle({
           {description ? description : "No description"}
         </p>
         <div className="flex justify-between items-center text-sm text-gray-500">
-          <Link
-            href={`profile/${user.username}`}
-            className="flex items-center gap-2 text-gray-600"
+          {/*SHOUD NE A LINK TAG*/}
+          <a
+            href={`articles/${user.username}`}
+            className="flex items-center gap-2"
           >
             <Image
               width={2}
@@ -58,7 +59,7 @@ export default function ListArticle({
               className="w-8 h-8 rounded-full bg-gray-700"
             />
             <span>{`by ${user.username}`}</span>
-          </Link>
+          </a>
           <span className="text-sm text-gray-500">
             {formatToTimeAgo(createdAt.toString())}
           </span>
