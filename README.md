@@ -19,13 +19,10 @@ This is Juyoung's personal project to create a web of simple artifacts for devel
 - articles/delete
   articles delete update.
 
+- /articles/[id]
+  XSS Prevent.
+
 ### Future
-
-- articles/add
-  XXS prevent
-
-- articles/add
-  css
 
 - images quality
 

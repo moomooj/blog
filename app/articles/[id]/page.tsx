@@ -3,7 +3,7 @@ import styles from "./article.module.css";
 import { formatToTimeAgo } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { getArticle, getIsOwner } from "./action";
+import { getArticle, getIsOwner, sanitizeHTML } from "./action";
 import DelteArtcle from "@/components/articleDelete/articleDelete";
 
 export async function generateMetadata({
@@ -34,6 +34,8 @@ export default async function ArticleDetail({
   const isOwner = await getIsOwner(article.userId);
 
   const arraytest = [1, 2, 3, 4, 5, 6];
+
+  const cleanHTML = await sanitizeHTML(article.content);
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -76,9 +78,8 @@ export default async function ArticleDetail({
           </div>
           <div className="w-full aspect-video relative rounded-lg overflow-hidden">
             <Image
-              width={1200}
-              height={630}
-              src={`${article.thumbnail}/article`}
+              fill
+              src={`${article.thumbnail!}/article`}
               alt={`${article.title}`}
               className="object-cover"
             />
@@ -88,7 +89,7 @@ export default async function ArticleDetail({
 
       <article
         className={styles.content}
-        dangerouslySetInnerHTML={{ __html: article.content }}
+        dangerouslySetInnerHTML={{ __html: cleanHTML }}
       />
       <div className="mt-16 border-t border-gray-200 pt-8">
         <Link
