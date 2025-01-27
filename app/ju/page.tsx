@@ -21,7 +21,9 @@ export default function Ju() {
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
           Juyoung Oh (JU)
         </h1>
-        <p className="text-xl text-gray-600 mb-6">Front-End Developer</p>
+        <p className="text-xl text-gray-600 mb-6">
+          Front-End Developer | Vancouve, BC
+        </p>
         <div className="flex justify-center gap-4">
           <Link
             href="https://github.com/moomooj"
