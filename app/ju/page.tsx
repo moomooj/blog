@@ -1,12 +1,11 @@
 "use client";
 
-import { ImageDeliveryURL } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Ju() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
+    <div className="max-w-4xl mx-auto py-12">
       <section className="mb-16 text-center">
         <div className="flex items-center justify-center">
           <Image
@@ -109,7 +108,7 @@ export default function Ju() {
           <div className="p-4 bg-gray-50 rounded-lg md:col-span-4">
             <h3 className="font-semibold mb-2">Libraries & Frameworks</h3>
             <ul className="text-gray-600 space-y-1">
-              <li>Redux, Zustand,Recoil, Axios, React Query</li>
+              <li>Redux, Zustand,Recoil, Axios, React Query, Jest</li>
               <li>Prisma, Rtf, Styled Components, Tailwind CSS, etc</li>
             </ul>
           </div>
@@ -123,7 +122,11 @@ export default function Ju() {
           </h2>
           <div className="space-y-8">
             <div className="bg-white hover:bg-blue-50 p-6 rounded-lg shadow-sm border border-gray-100">
-              <h3 className="text-xl font-semibold mb-2">DevLog</h3>
+              <div className="flex justify-between items-center">
+                <h3 className="text-xl font-semibold mb-2">DevLog</h3>
+                <span className="text-xs text-gray-500">20/DEC/2024 - </span>
+              </div>
+
               <p className="text-gray-600 mb-4">
                 A blogging platform for developers to share their knowledge and
                 experiences. Built with Next.js, Prisma, and PostgreSQL.
@@ -138,7 +141,6 @@ export default function Ju() {
                 <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
                   PostgreSQL
                 </span>
-                <span className="text-xs text-gray-500">20/DEC/2024 ~ </span>
               </div>
             </div>
           </div>
