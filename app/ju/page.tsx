@@ -170,9 +170,6 @@ export default function Ju() {
                     Three.js
                   </span>
                   <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
-                    styled-components
-                  </span>
-                  <span className="px-3 py-1 bg-gray-100 text-sm rounded-full">
                     recoil
                   </span>
                 </div>
