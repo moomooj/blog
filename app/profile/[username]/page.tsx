@@ -1,5 +1,6 @@
 import ArticleList from "@/components/article-list";
 import { getUser } from "./actions";
+import Image from "next/image";
 
 export default async function Profile({
   params,
@@ -10,9 +11,24 @@ export default async function Profile({
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {user ? <ArticleList initialArticles={user?.Article} /> : null}
-      </div>
+      {user ? (
+        <>
+          <div>
+            <Image
+              className="rounded-full"
+              width={100}
+              height={100}
+              src={`${user.avatar}`}
+              alt={`${user.username}Avatar`}
+            />
+            <h2>{user.username}</h2>
+          </div>
+          <nav>Article | About</nav>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ArticleList initialArticles={user?.Article} />
+          </div>
+        </>
+      ) : null}
     </div>
   );
 }

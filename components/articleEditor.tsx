@@ -1,7 +1,6 @@
 "use client";
 
 import "react-quill/dist/quill.snow.css";
-
 import React, { RefObject, useRef } from "react";
 import { ImageDeliveryURL } from "@/lib/utils";
 import { getCloudflareUploadUrl } from "@/lib/getCloudflareUploadUrl";
@@ -125,18 +124,19 @@ export default function ArticleEditor({
   );
 
   return (
-    <div>
-      <label className="block mb-2 text-sm font-medium text-gray-700">
-        Content
-      </label>
-      <ReactQuillComponent
-        forwardedRef={reactQuillRef}
-        theme="snow"
-        value={content}
-        onChange={onChange}
-        modules={modules}
-        formats={formats}
-      />
-    </div>
+    <>
+      <div className="block text-sm font-medium text-gray-700">Content</div>
+      <div className="custom-quill">
+        <ReactQuillComponent
+          forwardedRef={reactQuillRef}
+          theme="snow"
+          value={content}
+          onChange={onChange}
+          modules={modules}
+          formats={formats}
+          className="react-quill-custom"
+        />
+      </div>
+    </>
   );
 }

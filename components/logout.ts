@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import getSession from "./session";
+import getSession from "../lib/session";
 
 export async function logOut() {
   const session = await getSession();

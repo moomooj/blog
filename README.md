@@ -11,12 +11,15 @@ This is Juyoung's personal project to create a web of simple artifacts for devel
   article detail page HTML insert.
   article CSS Update.
 
--
+### 0.0.9
+
+- /articles/edit
+  articles edit update.
+
+- articles/delete
+  articles delete update.
 
 ### Future
-
-- articles/edit
-- articles/delete
 
 - articles/add
   XXS prevent

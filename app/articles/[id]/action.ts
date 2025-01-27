@@ -15,6 +15,7 @@ export async function getArticle(id: number) {
           avatar: true,
         },
       },
+      tags: true,
     },
   });
   return article;

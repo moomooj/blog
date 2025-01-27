@@ -25,7 +25,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`p-6 bg-gray-50 text-black max-w-screen-2xl mx-auto `}>
+      <body
+        className={`p-6 pt-28 bg-gray-50 text-black max-w-screen-2xl mx-auto `}
+      >
         {user ? (
           <>
             <LoggedInLayout user={user} />

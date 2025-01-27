@@ -12,3 +12,52 @@
     @apply w-full bg-blue-500 text-white  font-medium  rounded-md text-center hover:bg-blue-400 transition-colors;
   }
 }
+
+.custom-quill {
+  @apply w-full border border-gray-300 mt-0
+         rounded-lg shadow-sm 
+         focus-within:ring-2 focus-within:ring-blue-500 
+         bg-white transition-all duration-200 ease-in-out;
+}
+
+.ql-toolbar {
+  @apply border border-none 
+         rounded-t-lg px-4 py-2 
+         shadow-inner !important;
+}
+
+.ql-editor {
+  @apply rounded-b-lg min-h-[20rem] 
+         text-gray-800 leading-relaxed;
+}
+.ql-container {
+  @apply border-none !important;
+}
+
+.custom-quill:focus-within {
+  @apply ring-2 ring-blue-400 border-blue-400;
+}
+
+.ql-toolbar .ql-picker-label,
+.ql-toolbar .ql-picker-item,
+.ql-toolbar button {
+  @apply text-gray-700 hover:text-blue-500 transition-colors;
+}
+
+.ql-toolbar .ql-active {
+  @apply text-blue-500 font-bold;
+}
+
+.ql-editor.ql-blank::before {
+  @apply text-gray-400 italic;
+}
+
+@media (max-width: 768px) {
+  .ql-toolbar {
+    @apply px-2 py-1 text-sm;
+  }
+
+  .ql-container {
+    @apply min-h-[15rem];
+  }
+}
