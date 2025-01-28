@@ -1,4 +1,4 @@
-import { formatToTimeAgo } from "@/lib/utils";
+import { formatToTimeAgo, ImageDeliveryURL } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -23,48 +23,54 @@ export default function ListArticle({
   user,
 }: ListProductProps) {
   return (
-    <Link
-      href={`/articles/${id}`}
-      className=" rounded-sm shadow-lg overflow-hidden 
+    <div
+      className="relative rounded-sm shadow-lg overflow-hidden 
       transform transition-all duration-300 
        hover:shadow-xl"
     >
-      <div className=" block relative w-full h-60">
-        <Image
-          fill
-          sizes="10"
-          src={thumbnail ? `${thumbnail}/article` : ""}
-          alt={title}
-          className="object-cover"
-        />
-      </div>
-      <div className="p-3 space-y-3 ">
-        <h3 className="text-xl font-bold text-gray-800 line-clamp-2">
-          {title}
-        </h3>
-        <p className="text-gray-600 text-sm line-clamp-3">
-          {description ? description : "No description"}
-        </p>
-        <div className="flex justify-between items-center text-sm text-gray-500">
-          {/*SHOUD NE A LINK TAG*/}
-          <a
-            href={`articles/${user.username}`}
-            className="flex items-center gap-2"
-          >
-            <Image
-              width={2}
-              height={2}
-              alt="Profile"
-              src={`${user.avatar}`}
-              className="w-8 h-8 rounded-full bg-gray-700"
-            />
-            <span>{`by ${user.username}`}</span>
-          </a>
-          <span className="text-sm text-gray-500">
-            {formatToTimeAgo(createdAt.toString())}
-          </span>
+      <Link href={`/articles/${id}`}>
+        <div className="block relative w-full h-60">
+          <Image
+            fill
+            priority
+            sizes="100vw"
+            src={
+              thumbnail
+                ? `${thumbnail}/article`
+                : `${ImageDeliveryURL}bc68080a-1886-4053-2966-9223607d7600/article`
+            }
+            alt={title}
+            className="object-cover"
+          />
         </div>
+
+        <div className="p-3">
+          <h3 className="text-xl font-bold text-gray-800 line-clamp-2">
+            {title}
+          </h3>
+          <p className="text-gray-600 text-sm line-clamp-3">
+            {description || "No description"}
+          </p>
+        </div>
+      </Link>
+      <div className="p-3 flex justify-between items-center text-sm text-gray-500">
+        <Link
+          href={`/articles/${user.username}`}
+          className="flex items-center gap-2"
+        >
+          <Image
+            width={32}
+            height={32}
+            alt={`${user.username}'s avatar`}
+            src={user.avatar || "/default-avatar.png"}
+            className="w-8 h-8 rounded-full bg-gray-700"
+          />
+          <span>{`by ${user.username}`}</span>
+        </Link>
+        <span className="text-sm text-gray-500">
+          {formatToTimeAgo(createdAt.toString())}
+        </span>
       </div>
-    </Link>
+    </div>
   );
 }
