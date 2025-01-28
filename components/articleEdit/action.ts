@@ -13,12 +13,8 @@ const articleSchema = z.object({
     .min(2)
     .max(255),
   content: z.string({ required_error: "content is required" }),
-  thumbnail: z.string({
-    required_error: "thumbnail is required",
-  }),
-  description: z.string({
-    required_error: "description is required",
-  }),
+  thumbnail: z.string(),
+  description: z.string(),
 });
 
 export async function updateArtcle(
@@ -33,7 +29,6 @@ export async function updateArtcle(
   };
 
   const results = articleSchema.safeParse(data);
-
   if (!results.success) {
     return results.error.flatten();
   } else {
@@ -68,8 +63,8 @@ export async function uploadArtcle(_: any, formData: FormData) {
     description: formData.get("description"),
     thumbnail: formData.get("thumbnail"),
   };
-  const results = articleSchema.safeParse(data);
 
+  const results = articleSchema.safeParse(data);
   if (!results.success) {
     return results.error.flatten();
   } else {

@@ -60,29 +60,25 @@ export default function ArtcleForm({
 
   const interceptAction = async (_: any, formData: FormData) => {
     const file = formData.get("thumbnail");
-    if (!file || !(file instanceof File)) {
+
+    if (!file || !(file instanceof File)) return;
+
+    if (file.name === "") return;
+    if (file.size === 0) return;
+
+    const uploadURLResult = await getCloudflareUploadUrl();
+    const cloudflareForm = new FormData();
+    cloudflareForm.append("file", file);
+    const response = await fetch(uploadURLResult.uploadURL, {
+      method: "post",
+      body: cloudflareForm,
+    });
+    if (response.status !== 200) {
       return;
-    } else {
-      if (file.size === 0 || file.name === "") {
-        formData.set(
-          "thumbnail",
-          `${ImageDeliveryURL}bc68080a-1886-4053-2966-9223607d7600`
-        );
-      } else {
-        const uploadURLResult = await getCloudflareUploadUrl();
-        const cloudflareForm = new FormData();
-        cloudflareForm.append("file", file);
-        const response = await fetch(uploadURLResult.uploadURL, {
-          method: "post",
-          body: cloudflareForm,
-        });
-        if (response.status !== 200) {
-          return;
-        }
-        const imageUrl = `${ImageDeliveryURL}${uploadURLResult.id}`;
-        formData.set("thumbnail", imageUrl);
-      }
     }
+    const imageUrl = `${ImageDeliveryURL}${uploadURLResult.id}`;
+    formData.set("thumbnail", imageUrl);
+
     if (article) {
       return updateArtcle(articleNumber, formData);
     } else {
@@ -91,7 +87,6 @@ export default function ArtcleForm({
   };
 
   const [state, action] = useFormState(interceptAction, null);
-
   return (
     <form action={action} className="space-y-6">
       <div className="mb-4">

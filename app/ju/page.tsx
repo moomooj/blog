@@ -21,7 +21,7 @@ export default function Ju() {
           Juyoung Oh (JU)
         </h1>
         <p className="text-xl text-gray-600 mb-6">
-          Front-End Developer | Vancouve, BC
+          Front-End Developer | Vancouver, BC
         </p>
         <div className="flex justify-center gap-4">
           <Link
@@ -108,7 +108,7 @@ export default function Ju() {
           <div className="p-4 bg-gray-50 rounded-lg md:col-span-4">
             <h3 className="font-semibold mb-2">Libraries & Frameworks</h3>
             <ul className="text-gray-600 space-y-1">
-              <li>Redux, Zustand,Recoil, Axios, React Query, Jest</li>
+              <li>Redux, Zustand, Recoil, Axios, React Query, Jest</li>
               <li>Prisma, Rtf, Styled Components, Tailwind CSS, etc</li>
             </ul>
           </div>
