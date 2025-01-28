@@ -30,7 +30,7 @@ This is Juyoung's personal project to create a web of simple artifacts for devel
 - likes
 - settings
 
-- light /dark mode
+- light / dark mode
 
 - SNS login
 - user update, delete

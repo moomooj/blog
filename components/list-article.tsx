@@ -33,7 +33,7 @@ export default function ListArticle({
           <Image
             fill
             priority
-            sizes="100vw"
+            sizes={"100"}
             src={
               thumbnail
                 ? `${thumbnail}/article`

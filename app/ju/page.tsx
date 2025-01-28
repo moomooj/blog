@@ -28,20 +28,29 @@ export default function Ju() {
             href="https://github.com/moomooj"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
+            className="p-3 flex items-center bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
           >
             GitHub
           </Link>
+
           <Link
             href="mailto:bunnyju0@gmail.com"
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+            className="p-3 flex items-center bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
           >
             Contact Me
+          </Link>
+          <Link
+            href="/JuyoungOhResume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 flex items-center bg-red-400 text-white rounded-lg hover:bg-red-600 transition-colors shadow-md"
+          >
+            View Resume
           </Link>
         </div>
       </section>
 
-      <section className="mb-16">
+      <section className="mb-16 text-gray-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">About Me</h2>
         <p className="text-gray-600 leading-relaxed">
           I specialize in crafting responsive, dynamic, and user-friendly web
