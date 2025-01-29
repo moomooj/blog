@@ -55,7 +55,7 @@ export default function ListArticle({
       </Link>
       <div className="p-3 flex justify-between items-center text-sm text-gray-500">
         <Link
-          href={`/articles/${user.username}`}
+          href={`/profile/${user.username}`}
           className="flex items-center gap-2"
         >
           <Image

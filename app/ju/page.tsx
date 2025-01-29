@@ -34,7 +34,7 @@ export default function Ju() {
           </Link>
 
           <Link
-            href="mailto:bunnyju0@gmail.com"
+            href="mailto:juyoungoh.dev@gmail.com"
             className="p-3 flex items-center bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
           >
             Contact Me
