@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { deleteAccount } from "./deleteAccountAction";
+import { deleteAccount } from "../actions/deleteAccountAction";
 
 export default function DeleteAccount() {
   const [openDeliteConfirm, setOpenDeliteConfirm] = useState(false);
@@ -15,12 +15,13 @@ export default function DeleteAccount() {
   const handleConfirm = async () => {
     await deleteAccount();
   };
+
   return (
-    <div className="flex flex-col justify-center items-start">
+    <div className="flex flex-col justify-center items-start gap-3">
       <h3 className="text-lg font-medium text-gray-700">Delete Account</h3>
       <button
         onClick={openPanel}
-        className="bg-gray-200 cursor-pointer text-gray-800  py-1 px-4 rounded-md hover:bg-red-400 hover:text-white transition-colors"
+        className="cursor-pointer text-gray-800 p-2 px-4 rounded-md hover:bg-red-500 hover:text-white transition-colors"
       >
         Delete
       </button>
