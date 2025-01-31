@@ -50,8 +50,8 @@ export default function LoggedInLayout({ user }: UserProps) {
         </Link>
         <div onClick={openModal} className="relative">
           <Image
-            width={2}
-            height={2}
+            width={400}
+            height={400}
             alt="Profile"
             src={`${user.avatar}`}
             className="w-14 h-14 rounded-full bg-gray-700"
@@ -70,7 +70,12 @@ export default function LoggedInLayout({ user }: UserProps) {
               >
                 Create Article
               </Link>
-
+              <Link
+                className="block px-4 py-3 text-black hover:bg-gray-100 transition-colors"
+                href="/setting"
+              >
+                Setting
+              </Link>
               <div
                 onClick={async () => await logOut()}
                 className="px-4 py-3 cursor-pointer hover:bg-gray-100 transition-colors"
