@@ -21,7 +21,7 @@ export default function DeleteAccount() {
       <h3 className="text-lg font-medium text-gray-700">Delete Account</h3>
       <button
         onClick={openPanel}
-        className="cursor-pointer text-gray-800 p-2 px-4 rounded-md hover:bg-red-500 hover:text-white transition-colors"
+        className="w-full cursor-pointer bg-red-400 text-white p-2 px-4 rounded-md hover:bg-red-500 transition-colors"
       >
         Delete
       </button>

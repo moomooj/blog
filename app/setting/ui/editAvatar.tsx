@@ -1,4 +1,10 @@
-export default function EditAvatar(avatar: { avatar: string | undefined }) {
+export default function EditAvatar({
+  avatar,
+  userId,
+}: {
+  avatar: string | undefined;
+  userId: number;
+}) {
   return (
     <>
       <div className="flex justify-center">
