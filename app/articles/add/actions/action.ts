@@ -7,8 +7,12 @@ import { redirect } from "next/navigation";
 
 const parseTags = (val: unknown): string[] => {
   if (typeof val !== "string") return [];
-  const parsed = JSON.parse(val);
-  return Array.isArray(parsed) ? parsed : [];
+  try {
+    const parsed = JSON.parse(val);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
 };
 
 const articleSchema = z.object({
@@ -47,12 +51,27 @@ export async function createArtcle(_: any, formData: FormData) {
   } else {
     const session = await getSession();
     if (session.id) {
+      const tagPromises = results.data.tags.map(async (tagName) => {
+        const tag = await db.tag.upsert({
+          where: { name: tagName },
+          update: {},
+          create: { name: tagName },
+        });
+        return tag;
+      });
+
+      const tags = await Promise.all(tagPromises);
+
       const article = await db.article.create({
         data: {
           title: results.data.title,
           content: results.data.content,
           description: results.data.description,
           thumbnail: results.data.thumbnail,
+          published: results.data.published,
+          tags: {
+            connect: tags.map((tag) => ({ id: tag.id })),
+          },
           user: {
             connect: {
               id: session.id,

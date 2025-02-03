@@ -33,8 +33,6 @@ export default async function ArticleDetail({
   if (!article) return notFound();
   const isOwner = await getIsOwner(article.userId);
 
-  const arraytest = [1, 2, 3, 4, 5, 6];
-
   const cleanHTML = await sanitizeHTML(article.content);
 
   return (
@@ -67,12 +65,12 @@ export default async function ArticleDetail({
             </div>
           </div>
           <div className="flex flex-wrap gap-2 mb-6">
-            {arraytest.map((tag, index) => (
+            {article.tags.map((tag, index) => (
               <span
                 key={index}
                 className="bg-gray-200 text-gray-800 py-2 px-4 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-blue-600 hover:text-white cursor-pointer"
               >
-                {`Tag ${tag}`}
+                {`${tag.name}`}
               </span>
             ))}
           </div>

@@ -21,34 +21,25 @@ model User {
 }
 
 model Article {
-  id          Int          @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   title       String
   description String?
   thumbnail   String?
   content     String
-  published   Boolean      @default(false)
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  views       Int          @default(0)
-  tags        ArticleTag[]
-  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  views       Int      @default(0)
+  tags        Tag[]
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      Int
   Like        Like[]
 }
 
-model ArticleTag {
-  articleId Int
-  tagId     Int
-  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
-  tag       Tag     @relation(fields: [tagId], references: [id])
-
-  @@id([articleId, tagId])
-}
-
 model Tag {
-  id       Int          @id @default(autoincrement())
-  name     String       @unique
-  articles ArticleTag[]
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  articles Article[]
 }
 
 model Like {
