@@ -1,7 +1,7 @@
-import ArtcleForm from "@/components/articleUpload/articleUpload";
 import { notFound } from "next/navigation";
-import { getArticle, getIsOwner } from "../action";
+import { getArticle } from "../action";
 import EditArtcleForm from "./ui/editArtcleForm";
+import { getIsOwner } from "@/lib/IsOwner";
 
 export default async function EditArtcle({
   params,

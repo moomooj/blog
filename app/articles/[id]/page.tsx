@@ -3,8 +3,9 @@ import styles from "./article.module.css";
 import { formatToTimeAgo } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { getArticle, getIsOwner, sanitizeHTML } from "./action";
-import DelteArtcle from "@/app/articles/[id]/ui/articleDelete";
+import { getArticle, sanitizeHTML } from "./action";
+import { getIsOwner } from "@/lib/IsOwner";
+import DelteArtcle from "./ui/articleDelete";
 
 export async function generateMetadata({
   params,
@@ -31,8 +32,8 @@ export default async function ArticleDetail({
   if (isNaN(articleId)) return notFound();
   const article = await getArticle(articleId);
   if (!article) return notFound();
-  const isOwner = await getIsOwner(article.userId);
 
+  const isOwner = await getIsOwner(article.userId);
   const cleanHTML = await sanitizeHTML(article.content);
 
   return (

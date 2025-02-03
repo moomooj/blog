@@ -1,22 +1,27 @@
 "use client";
 
-import { InitialArticles } from "@/app/actions";
-import ListArticle from "./list-article";
+import { getMoreUserArticles, InitialArticles } from "@/app/actions";
+import ArticleCards from "./articleCards";
 import { useEffect, useRef, useState } from "react";
 import { getMoreArticles } from "@/app/actions";
 import { InfinityScrollCardNumber } from "@/lib/utils";
 
 interface ArtcleListProrps {
   initialArticles: InitialArticles;
+  userId: number | undefined;
 }
 
-export default function ArticleList({ initialArticles }: ArtcleListProrps) {
+export default function ArticleList({
+  initialArticles,
+  userId,
+}: ArtcleListProrps) {
   const [artcles, setArtcles] = useState(initialArticles);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [isLastPage, setisLastPage] = useState(false);
 
   const trigger = useRef<HTMLSpanElement>(null);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       async (
@@ -28,9 +33,10 @@ export default function ArticleList({ initialArticles }: ArtcleListProrps) {
         if (elemet.isIntersecting && trigger.current) {
           observer.unobserve(trigger.current);
           setIsLoading(true);
-          const newArtcles = await getMoreArticles(
-            page + InfinityScrollCardNumber
-          );
+          const newArtcles = userId
+            ? await getMoreUserArticles(page + InfinityScrollCardNumber, userId)
+            : await getMoreArticles(page + InfinityScrollCardNumber);
+
           if (newArtcles.length !== 0) {
             setPage((prev) => prev + InfinityScrollCardNumber);
             setArtcles((prev) => [...prev, ...newArtcles]);
@@ -50,10 +56,11 @@ export default function ArticleList({ initialArticles }: ArtcleListProrps) {
       observer.disconnect();
     };
   }, [page]);
+
   return (
     <>
       {artcles.map((article) => (
-        <ListArticle key={article.id} {...article} />
+        <ArticleCards key={article.id} {...article} />
       ))}
       {!isLastPage ? (
         <span

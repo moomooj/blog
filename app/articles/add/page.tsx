@@ -3,12 +3,12 @@
 import CreateArticleCard from "./ui/crateArticleCard";
 import { useState } from "react";
 import Input from "@/components/input";
-import ArticleEditor from "./ui/articleEditor";
 import { useFormState } from "react-dom";
 import { ImageDeliveryURL } from "@/lib/utils";
 import { getCloudflareUploadUrl } from "@/lib/getCloudflareUploadUrl";
 import Button from "@/components/button";
 import { createArtcle } from "./actions/action";
+import ArticleEditor from "@/components/articleEditor";
 
 export default function AddArtcle() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -77,7 +77,7 @@ export default function AddArtcle() {
           className="primary-btn cursor-pointer w-40 p-2"
           onClick={openCardModal}
         >
-          Finish
+          Finish
         </div>
       </div>
       <div

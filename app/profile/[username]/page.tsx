@@ -1,6 +1,8 @@
 import ArticleList from "@/components/article-list";
-import { getUser } from "./actions";
+import { getUser } from "./actions/getUser";
 import Image from "next/image";
+import { getIsOwner } from "@/lib/IsOwner";
+import { notFound } from "next/navigation";
 
 export default async function Profile({
   params,
@@ -8,7 +10,8 @@ export default async function Profile({
   params: { username: string };
 }) {
   const user = await getUser(params.username);
-
+  if (!user) return notFound();
+  const isowner = await getIsOwner(user.id);
   return (
     <div className="max-w-6xl mx-auto">
       {user ? (
@@ -25,7 +28,10 @@ export default async function Profile({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ArticleList initialArticles={user?.Article} />
+            <ArticleList
+              initialArticles={user?.Article}
+              userId={isowner ? user.id : undefined}
+            />
           </div>
         </>
       ) : null}

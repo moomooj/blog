@@ -16,6 +16,9 @@ export async function getInitialArticles() {
         select: { avatar: true, username: true },
       },
     },
+    where: {
+      published: true,
+    },
     take: InfinityScrollCardNumber,
     orderBy: {
       createdAt: "desc",
@@ -36,6 +39,30 @@ export async function getMoreArticles(page: number) {
       description: true,
       thumbnail: true,
       id: true,
+      published: true,
+      user: {
+        select: { avatar: true, username: true },
+      },
+    },
+    skip: page * 1,
+    take: 1,
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return articles;
+}
+
+export async function getMoreUserArticles(page: number, userId: number) {
+  const articles = await db.article.findMany({
+    where: { userId },
+    select: {
+      title: true,
+      createdAt: true,
+      description: true,
+      thumbnail: true,
+      id: true,
+      published: true,
       user: {
         select: { avatar: true, username: true },
       },

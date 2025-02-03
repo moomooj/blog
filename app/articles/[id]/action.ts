@@ -1,7 +1,6 @@
 "use server";
 
 import db from "@/lib/db";
-import getSession from "@/lib/session";
 import sanitizeHtml from "sanitize-html";
 
 export async function getArticle(id: number) {
@@ -20,14 +19,6 @@ export async function getArticle(id: number) {
     },
   });
   return article;
-}
-
-export async function getIsOwner(userId: number) {
-  const session = await getSession();
-  if (session.id) {
-    return session.id === userId;
-  }
-  return false;
 }
 
 export async function sanitizeHTML(content: string) {

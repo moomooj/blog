@@ -1,5 +1,5 @@
 "use client";
-import ArticleEditor from "@/app/articles/add/ui/articleEditor";
+
 import Button from "@/components/button";
 import Input from "@/components/input";
 import { useState } from "react";
@@ -8,6 +8,7 @@ import EditArticleCard from "./editArticleCard";
 import { ImageDeliveryURL } from "@/lib/utils";
 import { getCloudflareUploadUrl } from "@/lib/getCloudflareUploadUrl";
 import { UpdateArtcle } from "../actions/action";
+import ArticleEditor from "@/components/articleEditor";
 
 interface Article {
   id: number;

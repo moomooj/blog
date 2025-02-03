@@ -14,7 +14,7 @@ interface ListProductProps {
   };
 }
 
-export default function ListArticle({
+export default function ArticleCards({
   id,
   title,
   description,

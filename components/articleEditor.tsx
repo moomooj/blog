@@ -47,7 +47,6 @@ export default function ArticleEditor({
       if (input.files && input.files[0]) {
         const file = input.files[0];
 
-        // 파일 검증 (예: 2MB 이하, 형식 검사)
         if (!/^image\/(jpe?g|png)$/.test(file.type)) {
           alert("Only JPG and PNG formats are allowed.");
           return;
@@ -124,19 +123,14 @@ export default function ArticleEditor({
   );
 
   return (
-    <>
-      <div className="block text-sm font-medium text-gray-700">Content</div>
-      <div className="custom-quill">
-        <ReactQuillComponent
-          forwardedRef={reactQuillRef}
-          theme="snow"
-          value={content}
-          onChange={onChange}
-          modules={modules}
-          formats={formats}
-          className="react-quill-custom"
-        />
-      </div>
-    </>
+    <ReactQuillComponent
+      forwardedRef={reactQuillRef}
+      theme="snow"
+      value={content}
+      onChange={onChange}
+      modules={modules}
+      formats={formats}
+      className="react-quill-custom"
+    />
   );
 }
