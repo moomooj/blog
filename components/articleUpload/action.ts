@@ -30,6 +30,8 @@ export async function updateArtcle(
     content: formData.get("content"),
     description: formData.get("description"),
     thumbnail: formData.get("thumbnail"),
+    published: formData.get("published"),
+    tags: formData.get("tags"),
   };
 
   const results = articleSchema.safeParse(data);
