@@ -8,7 +8,7 @@ import { InfinityScrollCardNumber } from "@/lib/utils";
 
 interface ArtcleListProrps {
   initialArticles: InitialArticles;
-  userId: number | undefined;
+  userId?: number;
 }
 
 export default function ArticleList({
