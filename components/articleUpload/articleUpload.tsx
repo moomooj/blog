@@ -94,7 +94,7 @@ export default function ArtcleForm({
 
   return (
     <form action={action} className="space-y-6">
-      <div className="mb-4">
+      <div className="mb-4 max-w-6xl m-auto">
         <label
           htmlFor="thumbnail"
           className="block mb-2 text-sm font-medium text-gray-700"

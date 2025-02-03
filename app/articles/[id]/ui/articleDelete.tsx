@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { deleteArticle } from "./action";
+import { deleteArticle } from "../actions/deleteAction";
 
 export default function DelteArtcle(articleId: { articleId: number }) {
   const [openDeliteConfirm, setOpenDeliteConfirm] = useState(false);

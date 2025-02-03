@@ -22,6 +22,9 @@ This is Juyoung's personal project to create a web of simple artifacts for devel
 - /articles/[id]
   XSS Prevent.
 
+- /setting
+  user update, delete
+
 ### Future
 
 - images quality
@@ -33,4 +36,6 @@ This is Juyoung's personal project to create a web of simple artifacts for devel
 - light / dark mode
 
 - SNS login
-- user update, delete
+
+- /setting
+  from error handle

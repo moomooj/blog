@@ -13,39 +13,21 @@
   }
 }
 
-.custom-quill {
-  @apply w-full border border-gray-300 mt-0
-         rounded-lg shadow-sm 
-         focus-within:ring-2 focus-within:ring-blue-500 
-         bg-white transition-all duration-200 ease-in-out;
+.react-quill-custom {
+  @apply h-full overflow-hidden mt-0
+     border-none !important;
 }
 
 .ql-toolbar {
-  @apply border border-none 
-         rounded-t-lg px-4 py-2 
-         shadow-inner !important;
+  @apply border-none absolute z-10 px-4 py-2 bg-white  !important;
+}
+
+.ql-container {
+  @apply flex w-full h-full py-16 border-none !important;
 }
 
 .ql-editor {
-  @apply rounded-b-lg min-h-[20rem] 
-         text-gray-800 leading-relaxed;
-}
-.ql-container {
-  @apply border-none !important;
-}
-
-.custom-quill:focus-within {
-  @apply ring-2 ring-blue-400 border-blue-400;
-}
-
-.ql-toolbar .ql-picker-label,
-.ql-toolbar .ql-picker-item,
-.ql-toolbar button {
-  @apply text-gray-700 hover:text-blue-500 transition-colors;
-}
-
-.ql-toolbar .ql-active {
-  @apply text-blue-500 font-bold;
+  @apply w-full  text-gray-800 !important;
 }
 
 .ql-editor.ql-blank::before {

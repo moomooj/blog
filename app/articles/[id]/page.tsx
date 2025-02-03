@@ -4,7 +4,7 @@ import { formatToTimeAgo } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { getArticle, getIsOwner, sanitizeHTML } from "./action";
-import DelteArtcle from "@/components/articleDelete/articleDelete";
+import DelteArtcle from "@/app/articles/[id]/ui/articleDelete";
 
 export async function generateMetadata({
   params,
